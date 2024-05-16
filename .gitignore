@@ -84,3 +84,7 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+
+# WANDB key
+phantom_multimodal/wandb/WANDB_KEY.txt
