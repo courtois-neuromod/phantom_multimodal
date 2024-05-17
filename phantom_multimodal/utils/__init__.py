@@ -1,8 +1,7 @@
 """."""
 
-from .runner import TaskRunner, TaskRunnerConfig
+from .runner import TaskRunner
 
 __all__ = [
     "TaskRunner",
-    "TaskRunnerConfig"
 ]

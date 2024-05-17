@@ -9,7 +9,6 @@ from lightning.pytorch.loggers.wandb import WandbLogger
 from phantom_multimodal.utils.misc import seed_all
 from phantom_multimodal.utils.lightning import instantiate_trainer, set_batch_size_and_num_workers
 
-
 TORCH_COMPILE_MINIMUM_CUDA_VERSION = 7
 
 
@@ -81,8 +80,8 @@ class TaskRunner():
             and torch.cuda.get_device_capability()[0]
             >= TORCH_COMPILE_MINIMUM_CUDA_VERSION
         ):
-            litmodule = torch.compile(  # type: ignore [assignment]
-                litmodule,  # mypy: `torch.compile`` not typed for `BaseLitModule`.
+            self.litmodule = torch.compile(  # type: ignore [assignment]
+                self.litmodule,  # mypy: `torch.compile`` not typed for `BaseLitModule`.
             )
         trainer.fit(model=litmodule, datamodule=datamodule, ckpt_path="last")
         """TODO: Add logic for HPO"""

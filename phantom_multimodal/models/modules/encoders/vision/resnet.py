@@ -7,6 +7,7 @@ https://pytorch.org/vision/stable/models.html
 """
 
 import torch
+from omegaconf import DictConfig
 from torchvision.models import resnet152
 from torchvision.models import ResNet152_Weights
 
@@ -18,8 +19,8 @@ class ResNet_Encoder():
     ) -> None:
         self.config = config
 
-        device: str = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = resnet152(weights="IMAGENET1K_V2")
+        device: str = "cuda" if torch.cuda.is_available() else "cpu"
         self.model.to(device)
 
         torch.set_grad_enabled(False)
